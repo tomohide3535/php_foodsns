@@ -15,5 +15,6 @@ use App\Http\Controllers\PostController;  //外部にあるPostControllerクラ�
 
 //httpリクエストのメゾットを定義。、今回はgetメソッド
 Route::get('/posts', [PostController::class, 'index']);   //PostControllerのibdexというメゾットを実行
-
 Route::get('/',[PostController::class, 'index']);
+//ブログの投稿詳細画面
+Route::get('/posts/{post}', [PostController::class ,'show']);
