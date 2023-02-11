@@ -9,8 +9,8 @@ class PostController extends Controller
 {
     public function index(Post $post)  //引数でpostというモデルを変数の$postにインスタンス化して格納
     {
-        return $post->get();  //postモデルのgetメソッドの結果がそのまま返却される
+        return view('posts/index')->with(['posts' => $post->getPaginateByLimit()]);
+        //blade内で使う変数'posts'と設定。'posts'の中身にgetを使い、インスタンス化した$postを代入。
     }
 }
-
 
