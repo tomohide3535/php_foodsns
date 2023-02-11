@@ -2,6 +2,7 @@
 
 use Illuminate\Support\Facades\Route;
 
+use App\Http\Controllers\PostController;  //外部にあるPostControllerクラスをインポート
 /*
 |--------------------------------------------------------------------------
 | Web Routes
@@ -13,6 +14,5 @@ use Illuminate\Support\Facades\Route;
 |
 */
 
-Route::get('/', function () {
-    return view('welcome');
-});
+//httpリクエストのメゾットを定義。、今回はgetメソッド
+Route::get('/posts', [PostController::class, 'index']);   //PostControllerのibdexというメゾットを実行
