@@ -19,3 +19,5 @@ Route::get('/',[PostController::class, 'index']);
 Route::get('/posts/create', [PostController::class, 'create']);  //ブログ投稿
 Route::post('/posts', [PostController::class, 'store']);         //投稿作成
 Route::get('/posts/{post}', [PostController::class ,'show']);    //ブログの投稿詳細画面
+Route::get('/posts/{post}/edit', [PostController::class, 'edit']);
+Route::put('/posts/{post}', [PostController::class, 'update']);
