@@ -7,16 +7,20 @@ use Illuminate\Database\Eloquent\Model;
 use Illuminate\Database\Eloquent\SoftDeletes;
 
 class Post extends Model
-{
+{   
+    
+    use HasFactory;
+    use SoftDeletes;
+
     protected $fillable = [
         'title',
         'body',
         'category_id',
+        'image_url',
     ];
     
     
-    use HasFactory;
-    use SoftDeletes;
+    
     
     public function getByLimit(int $limit_count = 10)
     {
