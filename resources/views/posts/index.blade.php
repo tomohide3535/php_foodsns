@@ -2,9 +2,11 @@
 <html lang="{{ str_replace('_', '-', app()->getLocale()) }}">
     <head>
         <meta charset="utf-8">
+        <meta name="csrf-token" content="{{ csrf_token() }}">
         <title>Blog</title>
         <!-- Fonts -->
         <link href="https://fonts.googleapis.com/css?family=Nunito:200,600" rel="stylesheet">
+        <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.6.3/jquery.min.js"></script>
     </head>
     <body>
         <x-app-layout>
@@ -21,6 +23,11 @@
                             </h2>
                             <a href="/categories/{{ $post->category->id }}">{{ $post->category->name }}</a>
                             <p class='body'>{{ $post->body }}</p>
+                            <div>
+                                <img src="{{ $post->image_url }}" alt="画像が読み込めません。"/>
+                            </div>
+                            <button onclick="like({{$post->id}})">いいね</button>
+                            <button onclick="unlike({{$post->id}})">いいね解除</button>
                             <p class='image'>{{ $post->image}}</p>
                             <form action="/posts/{{ $post->id }}" id="form_{{ $post->id }}" method="post">
                                 @csrf
@@ -46,5 +53,6 @@
                 }
             }
         </script>
+        <script src="{{ asset('/js/like.js') }}"></script>
     </body>
 </html>

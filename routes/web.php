@@ -2,6 +2,7 @@
 
 use App\Http\Controllers\ProfileController;
 use App\Http\Controllers\PostController;
+use App\Http\Controllers\LikeController;
 use App\Http\Controllers\CategoryController;
 use Illuminate\Support\Facades\Route;
 
@@ -40,5 +41,7 @@ Route::controller(PostController::class)->middleware(['auth'])->group(function()
     Route::get('/posts/{post}/edit', 'edit')->name('edit');
 });
 
+Route::post('/like/{postId}',[LikeController::class,'store'])->middleware(['auth']);
+Route::post('/unlike/{postId}',[LikeController::class,'destroy'])->middleware(['auth']);
 Route::get('/categories/{category}', [CategoryController::class,'index']);
 require __DIR__.'/auth.php';

@@ -6,6 +6,7 @@
         <title>Posts</title>
         <!-- Fonts -->
         <link href="https://fonts.googleapis.com/css?family=Nunito:200,600" rel="stylesheet">
+                <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.6.3/jquery.min.js"></script>
     </head>
     <body>
         <x-app-layout>
@@ -23,11 +24,14 @@
                     <div>
                         <img src="{{ $post->image_url }}" alt="画像が読み込めません。"/>
                     </div>
+                    <button onclick="like({{$post->id}})">いいね</button>
+                    <button onclick="unlike({{$post->id}})">いいね解除</button>
                 </div>
                 <div class="edit"><a href="/posts/{{ $post->id }}/edit">edit</a></div>
                 <div class="footer">
                     <a href="/">戻る</a>
                 </div>
         </x-app-layout>
+        <script src="{{ asset('js/like.js') }}"></script>
     </body>
 </html>
