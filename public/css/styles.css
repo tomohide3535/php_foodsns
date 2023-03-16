@@ -1,0 +1,46 @@
+.full-page {
+    background-color: #fff;
+}
+
+h1{
+    text-align: center;
+    background-color: white;
+}
+
+.posts{
+    padding: 20px;
+    background-color: white;
+}
+
+.post {
+    border-width: thick;
+    border-style: double;
+    border-color: black;
+    margin: 30px;
+    padding: 10px;
+    background-color: white;
+}
+
+.title{
+    color: black;
+    font-size: 400%;
+    font-weight: bold;
+    text-align: center;
+}
+
+.post_user{
+    text-align: right;
+}
+
+.category{
+    text-align: right;
+}
+
+.photo {
+    width: 200%;
+    margin: auto; 
+}
+
+.body {
+    text-align: center;
+}
