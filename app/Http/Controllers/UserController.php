@@ -5,6 +5,7 @@ namespace App\Http\Controllers;
 use Illuminate\Http\Request;
 use App\Http\Controllers\Controller;
 use App\Models\User;
+use App\Models\Post;
 use Illuminate\Support\Facades\Auth;
 use Cloudinary;
 
@@ -13,9 +14,10 @@ class UserController extends Controller
 {
     public function index()
     {
-        $id = Auth::id();
-        $user = User::find($id);
-        return view('my_page', ['my_user' => $user]);
+        
+        $user = auth()->user();
+        $posts = Post::where('user_id', $user->id)->get();
+        return view('my_page', ['my_user' => $user, 'posts' => $posts]);
     }
     
     public function my_page_update(Request $request)
