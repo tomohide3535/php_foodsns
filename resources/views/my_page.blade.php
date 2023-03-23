@@ -10,6 +10,15 @@
             <div class='photo'>
                 <img src="{{ $my_user->my_img }}" alt="画像が読み込めません。"/>
             </div>
+            @foreach ($posts as $post)
+                <h2 class='title'>
+                    <a href="/posts/{{ $post->id }}">{{ $post->title }}</a>
+                </h2>
+                <div class='photo'>
+                    <img src="{{ $post->image_url }}" alt="画像が読み込めません。"/>
+                </div>
+            @endforeach
+            
             <!-- マイページ変更画面 -->
             <form action="/my_page2" method="post" enctype='multipart/form-data'> 
                 {{ csrf_field() }}
