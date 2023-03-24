@@ -16,27 +16,31 @@
                 <div class='posts'>
                     @foreach ($posts as $post)
                         <div class='post'>
-                            <h2 class='title'>
-                                <a href="/posts/{{ $post->id }}">{{ $post->title }}</a>
-                            </h2>
-                            <div class='post_user'>
-                                <a href="/profile">投稿者：{{ Auth::user()->name }}</a>
+                            <div class='inner'>
+                                <h2 class='title'>
+                                    <a href="/posts/{{ $post->id }}">{{ $post->title }}</a>
+                                </h2>
+                                <div class='post_user'>
+                                    <a href="/profile">投稿者：{{ Auth::user()->name }}</a>
+                                </div>
+                                <div class='category'>
+                                    <a href="/categories/{{ $post->category->id }}">category:{{ $post->category->name }}</a>
+                                </div>
+                                <div class='photo'>
+                                    <img src="{{ $post->image_url }}" alt="画像が読み込めません。"/>
+                                </div>
+                                <p class='body'>{{ $post->body }}</p>
+                                <button onclick="like({{$post->id}})">いいね</button>
+                                <button onclick="unlike({{$post->id}})">いいね解除</button>
+                                <p class='image'>{{ $post->image}}</p>
+                                <div class='delete'>
+                                    <form action="/posts/{{ $post->id }}" id="form_{{ $post->id }}" method="post">
+                                        @csrf
+                                        @method('DELETE')
+                                        <button type="button" onclick="deletePost({{ $post->id }})">delete</button> 
+                                    </form>
+                                </div>
                             </div>
-                            <div class='category'>
-                                <a href="/categories/{{ $post->category->id }}">category:{{ $post->category->name }}</a>
-                            </div>
-                            <div class='photo'>
-                                <img src="{{ $post->image_url }}" alt="画像が読み込めません。"/>
-                            </div>
-                            <p class='body'>{{ $post->body }}</p>
-                            <button onclick="like({{$post->id}})">いいね</button>
-                            <button onclick="unlike({{$post->id}})">いいね解除</button>
-                            <p class='image'>{{ $post->image}}</p>
-                            <form action="/posts/{{ $post->id }}" id="form_{{ $post->id }}" method="post">
-                                @csrf
-                                @method('DELETE')
-                                <button type="button" onclick="deletePost({{ $post->id }})">delete</button> 
-                            </form>
                         </div>
                     @endforeach
                 </div>

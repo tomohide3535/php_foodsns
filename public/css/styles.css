@@ -10,6 +10,8 @@ h1{
 .posts{
     padding: 20px;
     background-color: white;
+    display: grid;
+    grid-template-columns: 1fr 1fr 1fr;
 }
 
 .post {
@@ -37,10 +39,23 @@ h1{
 }
 
 .photo {
-    width: 200%;
+    width: 100%;
     margin: auto; 
+}
+
+.inner {
+    width: 90%;
+    margin: 0 auto;
+}
+
+.photo img {
+    width: 100%;
 }
 
 .body {
     text-align: center;
+}
+
+.delete button {
+    border-style: solid;
 }
