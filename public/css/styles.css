@@ -56,6 +56,14 @@ h1{
     text-align: center;
 }
 
-.delete button {
+.liked {
+    color: rgb(225, 58, 86);
+}
+
+.like-toggle {
+    cursor: pointer;
+}
+
+.delete {
     border-style: solid;
 }
