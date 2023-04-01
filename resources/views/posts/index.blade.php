@@ -7,6 +7,7 @@
         <!-- Fonts -->
         <link href="https://fonts.googleapis.com/css?family=Nunito:200,600" rel="stylesheet">
         <link href="{{asset('/css/styles.css')}}" rel="stylesheet">
+        @vite(['resources/css/app.css', 'resources/js/app.js'])
         <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.6.3/jquery.min.js"></script>
     </head>
     <body>
@@ -30,8 +31,21 @@
                                     <img src="{{ $post->image_url }}" alt="画像が読み込めません。"/>
                                 </div>
                                 <p class='body'>{{ $post->body }}</p>
-                                <button onclick="like({{$post->id}})">いいね</button>
-                                <button onclick="unlike({{$post->id}})">いいね解除</button>
+                                <!--<button onclick="like({{$post->id}})">いいね</button>-->
+                                <!--<button onclick="unlike({{$post->id}})">いいね解除</button>-->
+                                @auth
+                                @if (!$post->isLikedBy(Auth::user()))
+                                    <span class="likes">
+                                        <i class="fas fa-heart like-toggle" data-post-id="{{ $post->id }}"></i>
+                                    <span class="like-counter">{{$post->likes_count}}</span>
+                                    </span><!-- /.likes -->
+                                @else
+                                    <span class="likes">
+                                        <i class="fas fa-heart heart like-toggle liked" data-post-id="{{ $post->id }}"></i>
+                                    <span class="like-counter">{{$post->likes_count}}</span>
+                                    </span><!-- /.likes -->
+                                @endif
+                                @endauth
                                 <p class='image'>{{ $post->image}}</p>
                                 <div class='delete'>
                                     <form action="/posts/{{ $post->id }}" id="form_{{ $post->id }}" method="post">

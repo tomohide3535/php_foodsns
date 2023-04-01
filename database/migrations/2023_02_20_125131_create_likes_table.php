@@ -21,7 +21,7 @@ return new class extends Migration
                 ->constrained() //userテーブルのidカラムを参照するconstrainedメソッド
                 ->onDelete('cascade'); //削除時のオプション
                 
-            $table->foreignId('posts_id') //postsテーブルの外部キー設定
+            $table->foreignId('post_id') //postsテーブルの外部キー設定
                 ->constrained() //postテーブルのidカラムを参照するconstrainedメソッド
                 ->onDelete('cascade'); //削除時のオプション
         });
